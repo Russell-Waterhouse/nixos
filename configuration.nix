@@ -95,6 +95,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+   unzip
    wget
    htop
    hugo
@@ -116,6 +117,9 @@
    gcc
    alacritty
    nodejs
+   # haskellPackages.ghcup # BROKEN
+   luajitPackages.luarocks
+   python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
