@@ -120,6 +120,7 @@
    # haskellPackages.ghcup # BROKEN
    luajitPackages.luarocks
    python3
+   discord
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
