@@ -79,7 +79,7 @@
   users.users.russ = {
     isNormalUser = true;
     description = "russ";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "uinput" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -123,6 +123,7 @@
    discord
    # azuredatastudio # BROKEN
    azure-cli
+   kanata
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -137,6 +138,42 @@
 
   # docker
   virtualisation.docker.enable = true;
+
+  # kanata
+  services.kanata = {
+    enable = true;
+    keyboards = {
+      internalKeyboard = {
+        extraDefCfg = "process-unmapped-keys yes";
+        config = ''
+        ;; defsrc is still necessary
+       (defsrc
+         caps a s d f j k l ;
+       )
+      (defvar
+        tap-time 150
+        hold-time 200
+      )
+
+      (defalias
+        escctrl (tap-hold 100 100 esc lctl)
+        a (tap-hold $tap-time $hold-time a lmet)
+        s (tap-hold $tap-time $hold-time s lalt)
+        d (tap-hold $tap-time $hold-time d lsft)
+        f (tap-hold $tap-time $hold-time f lctl)
+        j (tap-hold $tap-time $hold-time j rctl)
+        k (tap-hold $tap-time $hold-time k rsft)
+        l (tap-hold $tap-time $hold-time l ralt)
+        ; (tap-hold $tap-time $hold-time ; rmet)
+      )
+
+      (deflayer base
+        @escctrl @a @s @d @f @j @k @l @;
+      )
+      '';
+    };
+  };
+};
 
   # 
 
