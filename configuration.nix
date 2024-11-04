@@ -121,6 +121,8 @@
    luajitPackages.luarocks
    python3
    discord
+   # azuredatastudio # BROKEN
+   azure-cli
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
