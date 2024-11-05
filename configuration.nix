@@ -117,6 +117,8 @@
    gcc
    alacritty
    nodejs
+   cypress # Testing library
+   playwright # Testing library
    # haskellPackages.ghcup # BROKEN
    luajitPackages.luarocks
    python3
